@@ -1,7 +1,0 @@
-earthengine-api
-geemap
-pandas
-geopandas
-matplotlib
-numpy
-statsmodels
