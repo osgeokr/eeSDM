@@ -1,5 +1,7 @@
 # eeSDM: Google Earth Engine-based SDM
 
+<img src="https://github.com/osgeokr/eeSDM/blob/main/IMG/predict_sdm.png" style="max-width:100%;">
+
 `eeSDM` is a Python package designed for conducting species distribution modeling(SDM) using Google Earth Engine. This package provides researchers in ecology, environmental science, and data science with an efficient toolset to explore and predict the relationship between species distribution and environmental factors.
 
 ## Features
@@ -32,11 +34,13 @@ import eeSDM
 # Plot Yearly & Monthly data distribution
 eeSDM.plot_data_distribution(gdf)
 ```
+<img src="https://github.com/osgeokr/eeSDM/blob/main/IMG/data_distribution_plot.png" style="max-width:100%;">
 
 ```python
 # Plot heatmap
 eeSDM.plot_heatmap(gdf)
 ```
+<img src="https://github.com/osgeokr/eeSDM/blob/main/IMG/heatmap_plot.png" style="max-width:100%;">
 
 ```python
 # Apply the function to the raw data with the specified GrainSize
@@ -54,6 +58,7 @@ filtered_PixelVals_df, bands = eeSDM.filter_variables_by_vif(PixelVals_df)
 # Plot correlation heatmap
 eeSDM.plot_correlation_heatmap(filtered_PixelVals_df, h_size=6)
 ```
+<img src="https://github.com/osgeokr/eeSDM/blob/main/IMG/correlation_heatmap_plot.png" style="max-width:100%;">
 
 ```python
 # Generate Random Pseudo-Absence Data in the Entire Area of Interest
@@ -65,6 +70,7 @@ AreaForPA = eeSDM.generate_pa_spatial_constraint(Data, GrainSize, AOI)
 # Generate Environmental Pseudo-Absence Data (Environmental Profiling)
 AreaForPA = eeSDM.generate_pa_environmental_profiling(Data, GrainSize, AOI, predictors)
 ```
+<img src="https://github.com/osgeokr/eeSDM/blob/main/IMG/generate_pa.png" style="max-width:100%;">
 
 ```python
 # Create a grid of polygons over a specified geometry
@@ -80,6 +86,7 @@ results = eeSDM.batchSDM(Grid, Data, AreaForPA, GrainSize, bands, predictors, nu
 # Plot Average Variable Importance
 eeSDM.plot_avg_variable_importance(results, numiter)
 ```
+<img src="https://github.com/osgeokr/eeSDM/blob/main/IMG/avg_variable_importance_plot.png" style="max-width:100%;">
 
 ```python
 # Calculate AUC-ROC and AUC-PR
@@ -90,6 +97,7 @@ eeSDM.calculate_and_print_ss_metrics(images, TestingDatasets, GrainSize, numiter
 
 # Plot ROC and PR curves
 eeSDM.plot_roc_pr_curves(images, TestingDatasets, GrainSize, numiter)
+<img src="https://github.com/osgeokr/eeSDM/blob/main/IMG/roc_pr_curves_plot" style="max-width:100%;">
 
 # Potential Distribution Map using the optimal threshold
 DistributionMap2 = eeSDM.create_DistributionMap2(images, TestingDatasets, GrainSize, numiter, ModelAverage)
