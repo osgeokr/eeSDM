@@ -1,2 +1,98 @@
-# eeSDM
-Google Earth Engine-based Species Distribution Modeling
+# eeSDM: Google Earth Engine-based SDM
+
+`eeSDM` is a Python package designed for conducting species distribution modeling(SDM) using Google Earth Engine. This package provides researchers in ecology, environmental science, and data science with an efficient toolset to explore and predict the relationship between species distribution and environmental factors.
+
+## Features
+
+- Preprocessing of GBIF Occurrence Data (e.g., heatmap plotting, duplicate removal)
+- Multicollinearity Removal for Environmental Variables (VIF)
+- Generation of Pseudo-Absence Data (Full extent, spatial constraints, and environmental profiling)
+- Spatial Grid Generation
+- SDM SDM fitting and prediction
+- Compute Variable Importance scores and visualization
+- Accuracy assessment (e.g., EUC-ROC, EUC-PR, Sensitivity, Specificity) and Curve Plotting
+- Potential Distribution Plotting using Optimal Thresholds
+
+## Installation
+
+To install the `eeSDM` package, you can use the following pip command:
+
+```bash
+pip install eeSDM
+```
+
+## Usage
+
+Here's a simple example of how to use the geokakao package:
+```python
+import eeSDM
+```
+
+```python
+# Plot Yearly & Monthly data distribution
+eeSDM.plot_data_distribution(gdf)
+```
+
+```python
+# Plot heatmap
+eeSDM.plot_heatmap(gdf)
+```
+
+```python
+# Apply the function to the raw data with the specified GrainSize
+Data = eeSDM.remove_duplicates(data_raw, GrainSize)
+```
+
+```python
+# Perform filtering using VIF (Variance Inflation Factor)
+# Apply the function to remove variables with high multicollinearity
+# Obtain the list of remaining column names after VIF-based filtering
+filtered_PixelVals_df, bands = eeSDM.filter_variables_by_vif(PixelVals_df)
+```
+
+```python
+# Generate Random Pseudo-Absence Data in the Entire Area of Interest
+AreaForPA = eeSDM.generate_pa_full_area(Data, GrainSize, AOI)
+
+# Generate Spatially Constrained Pseudo-Absence Data (Presence Buffer)
+AreaForPA = eeSDM.generate_pa_spatial_constraint(Data, GrainSize, AOI)
+
+# Generate Environmental Pseudo-Absence Data (Environmental Profiling)
+AreaForPA = eeSDM.generate_pa_environmental_profiling(Data, GrainSize, AOI, predictors)
+```
+
+```python
+# Create a grid of polygons over a specified geometry
+Grid = eeSDM.createGrid(AOI, scale=50000)
+```
+
+```python
+# Fit SDM
+results = eeSDM.batchSDM(Grid, Data, AreaForPA, GrainSize, bands, predictors, numiter, split=0.7, seed=None)
+```
+
+```python
+# Plot Average Variable Importance
+eeSDM.plot_avg_variable_importance(results, numiter)
+```
+
+```python
+# Calculate AUC-ROC and AUC-PR
+eeSDM.calculate_and_print_auc_metrics(images, TestingDatasets, GrainSize, numiter)
+
+# Calculate Sensitivity and Specificity
+eeSDM.calculate_and_print_ss_metrics(images, TestingDatasets, GrainSize, numiter)
+
+# Plot ROC and PR curves
+eeSDM.plot_roc_pr_curves(images, TestingDatasets, GrainSize, numiter)
+
+# Potential Distribution Map using the optimal threshold
+DistributionMap2 = eeSDM.create_DistributionMap2(images, TestingDatasets, GrainSize, numiter, ModelAverage)
+```
+
+## References
+
+The content of this packges presents a conversion and enhancement of JavaScript source code provided by researchers from the Smithsonian Conservation Biology Institute. The original JavaScript code has been translated and refined into Python to achieve the same objectives.
+
+1. Crego, R. D., Stabach, J. A., & Connette, G. (2022). Implementation of species distribution models in Google Earth Engine. *Diversity and Distributions*, 28, 904–916. [DOI](https://doi.org/10.1111/ddi.13491)
+2. [Smithsonian SDMinGEE GitHub Repository](https://smithsonian.github.io/SDMinGEE/)
