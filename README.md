@@ -97,11 +97,11 @@ eeSDM.calculate_and_print_ss_metrics(images, TestingDatasets, GrainSize, numiter
 
 # Plot ROC and PR curves
 eeSDM.plot_roc_pr_curves(images, TestingDatasets, GrainSize, numiter)
-<img src="https://github.com/osgeokr/eeSDM/blob/main/IMG/roc_pr_curves_plot" style="max-width:100%;">
 
 # Potential Distribution Map using the optimal threshold
 DistributionMap2 = eeSDM.create_DistributionMap2(images, TestingDatasets, GrainSize, numiter, ModelAverage)
 ```
+<img src="https://github.com/osgeokr/eeSDM/blob/main/IMG/roc_pr_curves_plot.png" style="max-width:100%;">
 
 ## References
 
