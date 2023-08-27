@@ -103,6 +103,8 @@ DistributionMap2 = eeSDM.create_DistributionMap2(images, TestingDatasets, GrainS
 ```
 <img src="https://github.com/osgeokr/eeSDM/blob/main/IMG/roc_pr_curves_plot.png" style="max-width:100%;">
 
+## [Case Study 1: Habitat Suitability and Potential Distribution Modeling of Fairy Pitta (Pitta nympha) Using Presence-Only Data](https://github.com/osgeokr/eeSDM/blob/main/eeSDM_Case%20Study%201_Pitta%20nimpha.ipynb)
+
 ## References
 
 The content of this packges presents a conversion and enhancement of JavaScript source code provided by researchers from the Smithsonian Conservation Biology Institute. The original JavaScript code has been translated and refined into Python to achieve the same objectives.
