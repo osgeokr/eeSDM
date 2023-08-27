@@ -51,6 +51,11 @@ filtered_PixelVals_df, bands = eeSDM.filter_variables_by_vif(PixelVals_df)
 ```
 
 ```python
+# Plot correlation heatmap
+eeSDM.plot_correlation_heatmap(filtered_PixelVals_df, h_size=6)
+```
+
+```python
 # Generate Random Pseudo-Absence Data in the Entire Area of Interest
 AreaForPA = eeSDM.generate_pa_full_area(Data, GrainSize, AOI)
 
